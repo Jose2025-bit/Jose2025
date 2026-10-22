@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetCare - Veterinaria Huellitas & Amor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            teal: '#0D9488', // Verde mente/turquesa vibrante
+                            tealDark: '#0F766E',
+                            tealLight: '#CCFBF1',
+                            navy: '#1E293B', // Azul marino suave
+                            orange: '#F97316', // Naranja/amarillo cálido para acentos
+                            orangeHover: '#EA580C',
+                            cream: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and smooth transitions */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0D9488;
+            border-radius: 4px;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%), url('https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-slate-50 antialiased selection:bg-brand-teal selection:text-white">
+
+    <!-- ========================================== -->
+    <!-- 1. ENCABEZADO / NAVBAR                     -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+        <!-- Banner superior informativo -->
+        <div class="bg-brand-navy text-white text-xs py-1.5 px-4">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-brand-orange"></i> Atención 24/7 Urgencias</span>
+                    <span class="hidden sm:flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-orange"></i> Av. Las Mascotas #456, Ciudad</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="hidden md:inline">Síguenos:</span>
+                    <a href="#" class="hover:text-brand-orange transition"><i data-lucide="facebook" class="w-3.5 h-3.5"></i></a>
+                    <a href="#" class="hover:text-brand-orange transition"><i data-lucide="instagram" class="w-3.5 h-3.5"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Principal -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-teal flex items-center justify-center text-white shadow-lg shadow-brand-teal/30 group-hover:scale-105 transition-transform">
+                        <i data-lucide="dog" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading font-extrabold text-2xl text-brand-navy block leading-none">VetCare</span>
+                        <span class="text-xs font-medium text-brand-teal tracking-wider uppercase">Huellitas & Amor</span>
+                    </div>
+                </a>
+
+                <!-- Menú Escritorio -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-slate-600">
+                    <a href="#inicio" class="hover:text-brand-teal transition-colors py-2">Inicio</a>
+                    <a href="#nosotros" class="hover:text-brand-teal transition-colors py-2">Nosotros</a>
+                    <a href="#servicios" class="hover:text-brand-teal transition-colors py-2">Servicios</a>
+                    <a href="#planes" class="hover:text-brand-teal transition-colors py-2">Planes de Pago</a>
+                    <a href="#testimonios" class="hover:text-brand-teal transition-colors py-2">Testimonios</a>
+                    <a href="#contacto" class="hover:text-brand-teal transition-colors py-2">Contacto</a>
+                </nav>
+
+                <!-- Botones Acción / Urgencias -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-xl shadow-md transition-all hover:-translate-y-0.5">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        <span>Urgencias 24/7</span>
+                    </a>
+                    <a href="#contacto" class="bg-brand-orange hover:bg-brand-orangeHover text-white font-semibold px-4 py-2.5 rounded-xl shadow-md transition-all hover:-translate-y-0.5">
+                        Agendar Cita
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-brand-teal hover:bg-slate-100 focus:outline-none">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block py-2 font-medium text-slate-700 hover:text-brand-teal mobile-link">Inicio</a>
+            <a href="#nosotros" class="block py-2 font-medium text-slate-700 hover:text-brand-teal mobile-link">Nosotros</a>
+            <a href="#servicios" class="block py-2 font-medium text-slate-700 hover:text-brand-teal mobile-link">Servicios</a>
+            <a href="#planes" class="block py-2 font-medium text-slate-700 hover:text-brand-teal mobile-link">Planes de Pago</a>
+            <a href="#testimonios" class="block py-2 font-medium text-slate-700 hover:text-brand-teal mobile-link">Testimonios</a>
+            <a href="#contacto" class="block py-2 font-medium text-slate-700 hover:text-brand-teal mobile-link">Contacto</a>
+            <div class="pt-3 flex flex-col gap-2">
+                <a href="https://wa.me/1234567890" target="_blank" class="w-full text-center bg-emerald-600 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2">
+                    <i data-lucide="phone-call" class="w-4 h-4"></i> WhatsApp / Urgencias
+                </a>
+                <a href="#contacto" class="w-full text-center bg-brand-orange text-white font-semibold py-2.5 rounded-xl mobile-link">
+                    Agendar Cita
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 2. HERO SECTION                            -->
+    <!-- ========================================== -->
+    <section id="inicio" class="relative hero-gradient text-white py-24 lg:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-2xl">
+                <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-brand-tealLight px-3.5 py-1.5 rounded-full text-sm font-semibold mb-6 border border-white/20">
+                    <i data-lucide="heart" class="w-4 h-4 text-brand-orange fill-brand-orange"></i>
+                    Clínica Veterinaria Médica Integrativa
+                </span>
+                <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
+                    El mejor cuidado para tu <span class="text-brand-orange">mejor amigo</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-200 mb-8 font-light leading-relaxed">
+                    Ofrecemos atención médica especializada, hospitalización 24/7 y planes de salud diseñados para garantizar una vida larga, sana y feliz a tu mascota.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#servicios" class="bg-brand-teal hover:bg-brand-tealDark text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-teal/40 text-center transition-all hover:scale-105 flex items-center justify-center gap-2">
+                        <i data-lucide="stethoscope" class="w-5 h-5"></i> Ver Servicios
+                    </a>
+                    <a href="#contacto" class="bg-white hover:bg-slate-100 text-brand-navy font-bold px-8 py-4 rounded-xl shadow-lg text-center transition-all hover:scale-105 flex items-center justify-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-brand-orange"></i> Agendar Cita
+                    </a>
+                </div>
+
+                <!-- Métricas destacadas -->
+                <div class="mt-12 grid grid-cols-3 gap-6 pt-8 border-t border-white/20">
+                    <div>
+                        <p class="font-heading font-bold text-3xl text-brand-orange">12k+</p>
+                        <p class="text-xs text-slate-300">Pacientes Felices</p>
+                    </div>
+                    <div>
+                        <p class="font-heading font-bold text-3xl text-brand-orange">15+</p>
+                        <p class="text-xs text-slate-300">Años de Experiencia</p>
+                    </div>
+                    <div>
+                        <p class="font-heading font-bold text-3xl text-brand-orange">24/7</p>
+                        <p class="text-xs text-slate-300">Atención de Urgencias</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. SECCIÓN SOBRE NOSOTROS                  -->
+    <!-- ========================================== -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Galería de imágenes / Composición -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop" alt="Veterinaria examinando perrito" class="w-full h-[420px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 z-20 hidden sm:block bg-brand-teal text-white p-6 rounded-2xl shadow-xl max-w-xs">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-brand-orange mb-2"></i>
+                        <h4 class="font-heading font-bold text-lg mb-1">Garantía de Amor & Salud</h4>
+                        <p class="text-xs text-emerald-100">Instalaciones esterilizadas con tecnología médica de última generación.</p>
+                    </div>
+                    <!-- Elemento decorativo de fondo -->
+                    <div class="absolute -top-6 -left-6 w-full h-full bg-brand-tealLight rounded-3xl -z-10"></div>
+                </div>
+
+                <!-- Contenido Informativo -->
+                <div>
+                    <span class="text-brand-teal font-bold uppercase tracking-wider text-sm">Sobre VetCare</span>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy mt-2 mb-6 leading-snug">
+                        Apasionados por el bienestar y salud integral de tu mascota
+                    </h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        En <strong>Veterinaria Huellitas & Amor</strong> nacimos hace más de 15 años con una misión clara: ofrecer medicina veterinaria ética, cálida y de vanguardia. Tratamos a cada mascota como un miembro invaluable de la familia.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-tealLight text-brand-teal rounded-lg mt-1">
+                                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Instalaciones de Primer Nivel</h4>
+                                <p class="text-sm text-slate-500">Áreas separadas de felinos y caninos para reducir el estrés.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-tealLight text-brand-teal rounded-lg mt-1">
+                                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Médicos Especialistas</h4>
+                                <p class="text-sm text-slate-500">Equipo capacitado continuamente en cirugías complejas y dermatología.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equipo de Veterinarios -->
+            <div class="mt-20">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-brand-teal font-bold uppercase tracking-wider text-sm">Nuestro Equipo</span>
+                    <h3 class="font-heading font-extrabold text-3xl text-brand-navy mt-1">Conoce a tus Médicos de Confianza</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Vet 1 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=500&auto=format&fit=crop" alt="Dra. Sofia Mendoza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h4 class="font-heading font-bold text-lg text-brand-navy">Dra. Sofía Mendoza</h4>
+                            <p class="text-brand-teal font-medium text-xs mb-2">Directora / Cirujana Principal</p>
+                            <p class="text-slate-500 text-xs">Especialista en cirugía blanda y felinos con 12 años de trayectoria.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vet 2 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=500&auto=format&fit=crop" alt="Dr. Carlos Ramírez" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h4 class="font-heading font-bold text-lg text-brand-navy">Dr. Carlos Ramírez</h4>
+                            <p class="text-brand-teal font-medium text-xs mb-2">Especialista en Imagenología</p>
+                            <p class="text-slate-500 text-xs">Experto en ecografía, radiología digital y diagnóstico temprano.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vet 3 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1594824813566-7885a3977336?q=80&w=500&auto=format&fit=crop" alt="Dra. Elena Gómez" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h4 class="font-heading font-bold text-lg text-brand-navy">Dra. Elena Gómez</h4>
+                            <p class="text-brand-teal font-medium text-xs mb-2">Dermatología & Nutrición</p>
+                            <p class="text-slate-500 text-xs">Apasionada por las alergias cutáneas y la nutrición clínica preventiva.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vet 4 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=500&auto=format&fit=crop" alt="Dr. Miguel Torres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h4 class="font-heading font-bold text-lg text-brand-navy">Dr. Miguel Torres</h4>
+                            <p class="text-brand-teal font-medium text-xs mb-2">Urgencias & Cuidados Intensivos</p>
+                            <p class="text-slate-500 text-xs">Líder del equipo de emergencias 24/7 y cuidados postanestésicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. SECCIÓN DE SERVICIOS                   -->
+    <!-- ========================================== -->
+    <section id="servicios" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-teal font-bold uppercase tracking-wider text-sm">Cuidado Médico Completo</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy mt-2">Nuestros Servicios Médicos y Estéticos</h2>
+                <p class="text-slate-600 mt-3">Diseñados para cubrir cada etapa de vida de tu mascota con la mejor tecnología.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Tarjeta Servicio 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-tealLight text-brand-teal rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-teal group-hover:text-white transition-colors">
+                            <i data-lucide="stethoscope" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Consulta General & Preventiva</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Revisiones físicas exhaustivas, control de peso, chequeos geriátricos y orientación de conducta para perros y gatos.</p>
+                    </div>
+                    <a href="#contacto" onclick="preselectService('Consulta General')" class="inline-flex items-center gap-2 text-brand-teal font-semibold text-sm hover:gap-3 transition-all">
+                        Agendar consulta <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta Servicio 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i data-lucide="syringe" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Vacunación & Desparasitación</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Esquemas completos para cachorros y adultos. Protección inmunológica con biológicos de la más alta calidad.</p>
+                    </div>
+                    <a href="#contacto" onclick="preselectService('Vacunación')" class="inline-flex items-center gap-2 text-brand-teal font-semibold text-sm hover:gap-3 transition-all">
+                        Agendar cita <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta Servicio 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                            <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Cirugía & Quirófano</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Esterilizaciones, cirugía de tejidos blandos, traumatología y anestesia inhalatoria supervisada constantemente.</p>
+                    </div>
+                    <a href="#contacto" onclick="preselectService('Cirugía')" class="inline-flex items-center gap-2 text-brand-teal font-semibold text-sm hover:gap-3 transition-all">
+                        Consultar detalles <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta Servicio 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                            <i data-lucide="sparkles" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Estética & Grooming SPA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Baños medicados, corte de pelo por raza, dremel de uñas, limpieza de oídos y glándulas anales.</p>
+                    </div>
+                    <a href="#contacto" onclick="preselectService('Estética & Grooming')" class="inline-flex items-center gap-2 text-brand-teal font-semibold text-sm hover:gap-3 transition-all">
+                        Reservar Grooming <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta Servicio 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                            <i data-lucide="siren" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Urgencias 24/7 & Hospital</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Atención médica inmediata ante atropellos, intoxicaciones o descompensaciones. Áreas de monitoreo intensivo.</p>
+                    </div>
+                    <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center gap-2 text-rose-600 font-semibold text-sm hover:gap-3 transition-all">
+                        Llamar a Urgencias <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta Servicio 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                            <i data-lucide="flask-conical" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Laboratorio & Rayos X</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Análisis sanguíneos en 30 min, coproparásitoscópicos, perfil bioquímico y radiografía digital de alta resolución.</p>
+                    </div>
+                    <a href="#contacto" onclick="preselectService('Laboratorio & Rayos X')" class="inline-flex items-center gap-2 text-brand-teal font-semibold text-sm hover:gap-3 transition-all">
+                        Agendar Estudio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 5. SECCIÓN DE PLANES DE PAGO / MEMBRESÍAS  -->
+    <!-- ========================================== -->
+    <section id="planes" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-teal font-bold uppercase tracking-wider text-sm">Planes de Salud Preventiva</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy mt-2">Membresías diseñadas para tu tranquilidad</h2>
+                <p class="text-slate-600 mt-3">Ahorra hasta un 35% en atención veterinaria anual suscribiendo a tu mascota.</p>
+                
+                <!-- Selector de frecuencia -->
+                <div class="mt-8 flex justify-center items-center gap-4">
+                    <span id="label-monthly" class="text-sm font-semibold text-brand-navy">Mensual</span>
+                    <button id="toggle-billing" class="w-14 h-8 bg-brand-teal rounded-full p-1 transition-colors focus:outline-none relative">
+                        <div id="toggle-dot" class="w-6 h-6 bg-white rounded-full shadow-md transition-transform transform translate-x-0"></div>
+                    </button>
+                    <span id="label-annual" class="text-sm font-semibold text-slate-400">Anual <span class="bg-brand-orange/20 text-brand-orange text-xs px-2 py-0.5 rounded-full font-bold">2 Meses Gratis</span></span>
+                </div>
+            </div>
+
+            <!-- Grid de Tarjetas de Planes -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- PLAN BÁSICO -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between hover:border-brand-teal transition">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-heading font-bold text-2xl text-brand-navy">Plan Cachorro</h3>
+                            <span class="p-2 bg-white rounded-xl shadow-sm text-brand-teal"><i data-lucide="paw-print" class="w-6 h-6"></i></span>
+                        </div>
+                        <p class="text-slate-500 text-xs mb-6">Ideal para cachorros, gatitos o controles básicos del año.</p>
+                        
+                        <div class="mb-6">
+                            <span class="font-heading font-extrabold text-4xl text-brand-navy plan-price-1">$299</span>
+                            <span class="text-slate-500 text-sm plan-period">/mes</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> 2 Consultas generales al año</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> Esquema básico de vacunas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> Desparasitación interna semestral</li>
+                            <li class="flex items-center gap-2 text-slate-400"><i data-lucide="x" class="w-4 h-4"></i> Descuento en urgencias nocturnas</li>
+                            <li class="flex items-center gap-2 text-slate-400"><i data-lucide="x" class="w-4 h-4"></i> Baños de estética incluidos</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPlan('Plan Cachorro - $299/mes')" class="w-full bg-slate-200 hover:bg-brand-navy hover:text-white text-brand-navy font-bold py-3.5 rounded-xl transition">
+                        Seleccionar Plan
+                    </button>
+                </div>
+
+                <!-- PLAN VITAL (DESTACADO) -->
+                <div class="bg-brand-navy text-white rounded-3xl p-8 border-2 border-brand-orange relative flex flex-col justify-between shadow-xl scale-105 my-2 md:my-0">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-xs font-bold uppercase px-4 py-1.5 rounded-full shadow-md">
+                        Más Popular
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-4 mt-2">
+                            <h3 class="font-heading font-bold text-2xl text-white">Salud Activa</h3>
+                            <span class="p-2 bg-white/10 rounded-xl text-brand-orange"><i data-lucide="shield-check" class="w-6 h-6"></i></span>
+                        </div>
+                        <p class="text-slate-300 text-xs mb-6">Protección continua completa para perros y gatos adultos.</p>
+                        
+                        <div class="mb-6">
+                            <span class="font-heading font-extrabold text-4xl text-white plan-price-2">$499</span>
+                            <span class="text-slate-300 text-sm plan-period">/mes</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-200 mb-8">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-orange font-bold"></i> Consultas ilimitadas sin costo</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-orange font-bold"></i> Todas las vacunas anuales incluídas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-orange font-bold"></i> Desparasitación externa e interna</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-orange font-bold"></i> 15% Descuento en Cirugías y Estudios</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-orange font-bold"></i> 2 Baños de grooming al año</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPlan('Plan Salud Activa - $499/mes')" class="w-full bg-brand-orange hover:bg-brand-orangeHover text-white font-bold py-3.5 rounded-xl transition shadow-lg">
+                        Suscribirme Ahora
+                    </button>
+                </div>
+
+                <!-- PLAN PREMIUM -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between hover:border-brand-teal transition">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-heading font-bold text-2xl text-brand-navy">Cuidado Total</h3>
+                            <span class="p-2 bg-white rounded-xl shadow-sm text-brand-teal"><i data-lucide="crown" class="w-6 h-6"></i></span>
+                        </div>
+                        <p class="text-slate-500 text-xs mb-6">Máxima cobertura VIP para pacientes senior o con requerimientos especiales.</p>
+                        
+                        <div class="mb-6">
+                            <span class="font-heading font-extrabold text-4xl text-brand-navy plan-price-3">$799</span>
+                            <span class="text-slate-500 text-sm plan-period">/mes</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> Todo lo del Plan Salud Activa</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> 1 Perfil sanguíneo & Rayos X gratis/año</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> 1 Limpieza dental con ultrasonido</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> Atención prioritaria sin fila en urgencias</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-teal font-bold"></i> Grooming mensual (12 al año)</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPlan('Plan Cuidado Total - $799/mes')" class="w-full bg-slate-200 hover:bg-brand-navy hover:text-white text-brand-navy font-bold py-3.5 rounded-xl transition">
+                        Seleccionar Plan
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Métodos de Pago Aceptados -->
+            <div class="mt-16 bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Modalidades y Formas de Pago Aceptadas</p>
+                <div class="flex flex-wrap justify-center items-center gap-8 text-slate-600 text-sm font-semibold">
+                    <span class="flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5 text-brand-teal"></i> Tarjetas Crédito/Débito</span>
+                    <span class="flex items-center gap-2"><i data-lucide="arrow-left-right" class="w-5 h-5 text-brand-teal"></i> Transferencia SPEI</span>
+                    <span class="flex items-center gap-2"><i data-lucide="calendar-check-2" class="w-5 h-5 text-brand-teal"></i> Hasta 3, 6 y 12 Meses sin Intereses</span>
+                    <span class="flex items-center gap-2"><i data-lucide="banknote" class="w-5 h-5 text-brand-teal"></i> Pago en Efectivo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. SECCIÓN DE TESTIMONIOS                  -->
+    <!-- ========================================== -->
+    <section id="testimonios" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-orange font-bold uppercase tracking-wider text-sm">Opiniones Reales</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mt-2">Lo que dicen las familias de nuestros pacientes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Testimonio 1 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 backdrop-blur-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">"Salvaron a mi perrita 'Rocky' en una urgencia a las 3 AM por una ingesta accidental. El trato de los médicos fue humano, súper profesional y claro. Estaré eternamente agradecida."</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Laura Martínez" class="w-12 h-12 rounded-full object-cover border-2 border-brand-teal">
+                        <div>
+                            <h4 class="font-bold text-sm">Laura Martínez</h4>
+                            <p class="text-xs text-slate-400">Mamá de "Rocky" (Golden Retriever)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 backdrop-blur-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">"Llevamos contratando el Plan Salud Activa para nuestros 2 gatos desde hace un año. Nos hemos ahorrado bastante en consultas y las instalaciones para felinos son geniales."</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Roberto Sánches" class="w-12 h-12 rounded-full object-cover border-2 border-brand-teal">
+                        <div>
+                            <h4 class="font-bold text-sm">Roberto Sánchez</h4>
+                            <p class="text-xs text-slate-400">Papá de "Mimi" y "Oreo" (Gatos)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 backdrop-blur-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">"El servicio de estética Grooming SPA es sensacional. Mi pug solía estresarse mucho en otros lados, pero aquí sale feliz y olindo delicioso."</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Mariana Castro" class="w-12 h-12 rounded-full object-cover border-2 border-brand-teal">
+                        <div>
+                            <h4 class="font-bold text-sm">Mariana Castro</h4>
+                            <p class="text-xs text-slate-400">Mamá de "Bruno" (Pug)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 7. SECCIÓN DE FORMULARIO DE CONTACTO/CITAS -->
+    <!-- ========================================== -->
+    <section id="contacto" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Columna Izquierda: Información de contacto -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-brand-teal font-bold uppercase tracking-wider text-sm">Contacto Directo</span>
+                        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy mt-1">¿Listo para agendar o consultarnos algo?</h2>
+                        <p class="text-slate-600 mt-3 text-sm">Rellena el formulario o comunícate directamente por nuestros medios telefónicos.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-tealLight text-brand-teal rounded-xl">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Ubicación de la Clínica</h4>
+                                <p class="text-slate-600 text-sm">Av. Las Mascotas #456, Col. Jardines del Valle</p>
+                                <p class="text-slate-600 text-sm">Ciudad de México, CP 03100</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-tealLight text-brand-teal rounded-xl">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Teléfonos de Citas y Urgencias</h4>
+                                <p class="text-slate-600 text-sm">Oficina: (55) 5678-9012</p>
+                                <p class="text-slate-600 text-sm font-semibold text-emerald-600">WhatsApp Urgencias: +52 1 55 1234 5678</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-tealLight text-brand-teal rounded-xl">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Correo Electrónico</h4>
+                                <p class="text-slate-600 text-sm">contacto@vethuellitas.com</p>
+                                <p class="text-slate-600 text-sm">citas@vethuellitas.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-tealLight text-brand-teal rounded-xl">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Horarios de Atención</h4>
+                                <p class="text-slate-600 text-sm">Lunes a Sábado: 8:00 AM - 8:00 PM</p>
+                                <p class="text-slate-600 text-sm">Domingos: 9:00 AM - 3:00 PM</p>
+                                <p class="text-brand-orange text-xs font-bold mt-1">Urgencias Médicas: Abierto 24 Horas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mapa Simulado con CSS -->
+                    <div class="w-full h-48 bg-slate-200 rounded-2xl overflow-hidden relative shadow-inner border border-slate-300 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=crop" alt="Mapa Ubicación" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute bg-white px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 border border-slate-100">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-rose-500 fill-rose-500"></i>
+                            <span class="text-xs font-bold text-brand-navy">VetCare Clínica Principal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario interactivo -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100">
+                    <h3 class="font-heading font-bold text-2xl text-brand-navy mb-2">Formulario de Registro / Solicitud</h3>
+                    <p class="text-slate-500 text-sm mb-6">Completa tus datos y te confirmaremos la cita vía email o WhatsApp en minutos.</p>
+
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre Completo *</label>
+                                <input type="text" required placeholder="Ej. Ana García" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo Electrónico *</label>
+                                <input type="email" required placeholder="tu@correo.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Teléfono / WhatsApp *</label>
+                                <input type="tel" required placeholder="55 1234 5678" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre de la Mascota *</label>
+                                <input type="text" required placeholder="Ej. Toby / Pelusa" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tipo de Mascota *</label>
+                                <select required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition bg-white">
+                                    <option value="">Selecciona...</option>
+                                    <option value="Perro">Perro</option>
+                                    <option value="Gato">Gato</option>
+                                    <option value="Ave">Ave</option>
+                                    <option value="Roedor">Roedor / Exótico</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Servicio o Plan de Interés *</label>
+                                <select id="service-select" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition bg-white">
+                                    <option value="">Selecciona un servicio...</option>
+                                    <option value="Consulta General">Consulta General</option>
+                                    <option value="Vacunación">Vacunación & Desparasitación</option>
+                                    <option value="Cirugía">Cirugía & Quirófano</option>
+                                    <option value="Estética & Grooming">Estética & Grooming</option>
+                                    <option value="Laboratorio & Rayos X">Laboratorio & Rayos X</option>
+                                    <option value="Plan Cachorro - $299/mes">Membresía: Plan Cachorro</option>
+                                    <option value="Plan Salud Activa - $499/mes">Membresía: Plan Salud Activa</option>
+                                    <option value="Plan Cuidado Total - $799/mes">Membresía: Plan Cuidado Total</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Fecha Preferida</label>
+                                <input type="date" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Horario Preferido</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition bg-white">
+                                    <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+                                    <option value="Tarde (12:00 PM - 5:00 PM)">Tarde (12:00 PM - 5:00 PM)</option>
+                                    <option value="Noche (5:00 PM - 8:00 PM)">Noche (5:00 PM - 8:00 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Mensaje o Síntomas</label>
+                            <textarea rows="3" placeholder="Cuéntanos brevemente el motivo de la cita o cualquier síntoma..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 transition"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-teal hover:bg-brand-tealDark text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-teal/30 transition-all hover:scale-[1.01] flex items-center justify-center gap-2 text-base">
+                            <i data-lucide="send" class="w-5 h-5"></i> Enviar Mensaje / Solicitar Cita
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MODAL CONFIRMACIÓN CORREO ENVIADO          -->
+    <!-- ========================================== -->
+    <div id="modal-success" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl transform scale-90 transition-transform duration-300" id="modal-card">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check-circle" class="w-12 h-12"></i>
+            </div>
+            <h3 class="font-heading font-extrabold text-2xl text-brand-navy mb-2">¡Correo enviado con éxito!</h3>
+            <p class="text-slate-600 text-sm mb-6">Hemos recibido tu solicitud correctamente. Un representante de nuestro equipo te contactará a la brevedad para confirmar la fecha y hora de la cita.</p>
+            <button onclick="closeModal()" class="w-full bg-brand-teal hover:bg-brand-tealDark text-white font-bold py-3.5 rounded-xl transition shadow-md">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 8. PIE DE PÁGINA (FOOTER)                  -->
+    <!-- ========================================== -->
+    <footer class="bg-brand-navy text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Logo & Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-teal flex items-center justify-center text-white">
+                            <i data-lucide="dog" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-heading font-extrabold text-xl">VetCare</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Clínica médica veterinaria orientada a brindar salud, amor y protección a las mascotas de nuestra comunidad.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-teal transition"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-teal transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-teal transition"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Enlaces Rápidos -->
+                <div>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-brand-orange mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#inicio" class="hover:text-brand-teal transition">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-brand-teal transition">Sobre Nosotros</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-teal transition">Servicios Médicos</a></li>
+                        <li><a href="#planes" class="hover:text-brand-teal transition">Planes y Membresías</a></li>
+                        <li><a href="#contacto" class="hover:text-brand-teal transition">Agendar Cita</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Servicios -->
+                <div>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-brand-orange mb-4">Servicios Destacados</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#servicios" class="hover:text-brand-teal transition">Consultas Médicas</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-teal transition">Cirugía General</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-teal transition">Urgencias 24 Horas</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-teal transition">Grooming & Estética</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-teal transition">Rayos X & Laboratorio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Horarios & Aviso -->
+                <div>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-brand-orange mb-4">Atención Médica</h4>
+                    <p class="text-xs text-slate-300 mb-2"><strong>Atención Quirúrgica:</strong> 24 Horas / 365 Días</p>
+                    <p class="text-xs text-slate-300 mb-4"><strong>Línea Telefónica Directa:</strong> (55) 5678-9012</p>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 text-xs text-slate-400">
+                        <i data-lucide="shield" class="w-4 h-4 text-brand-teal inline mr-1"></i>
+                        Tu tranquilidad y la salud de tu mascota son nuestra prioridad número uno.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 VetCare - Veterinaria Huellitas & Amor. Todos los derechos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Aviso de Privacidad</a>
+                    <a href="#" class="hover:underline">Términos del Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- SCRIPT DE INTERACTIVIDAD                   -->
+    <!-- ========================================== -->
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        // Menu Movil Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Toggle Facturación Mensual / Anual
+        const toggleBilling = document.getElementById('toggle-billing');
+        const toggleDot = document.getElementById('toggle-dot');
+        const labelMonthly = document.getElementById('label-monthly');
+        const labelAnnual = document.getElementById('label-annual');
+
+        const price1 = document.querySelector('.plan-price-1');
+        const price2 = document.querySelector('.plan-price-2');
+        const price3 = document.querySelector('.plan-price-3');
+        const planPeriods = document.querySelectorAll('.plan-period');
+
+        let isAnnual = false;
+
+        toggleBilling.addEventListener('click', () => {
+            isAnnual = !isAnnual;
+            if (isAnnual) {
+                toggleDot.classList.add('translate-x-6');
+                labelMonthly.classList.replace('text-brand-navy', 'text-slate-400');
+                labelAnnual.classList.replace('text-slate-400', 'text-brand-navy');
+                
+                price1.textContent = '$2,990';
+                price2.textContent = '$4,990';
+                price3.textContent = '$7,990';
+                planPeriods.forEach(p => p.textContent = '/año');
+            } else {
+                toggleDot.classList.remove('translate-x-6');
+                labelAnnual.classList.replace('text-brand-navy', 'text-slate-400');
+                labelMonthly.classList.replace('text-slate-400', 'text-brand-navy');
+
+                price1.textContent = '$299';
+                price2.textContent = '$499';
+                price3.textContent = '$799';
+                planPeriods.forEach(p => p.textContent = '/mes');
+            }
+        });
+
+        // Selección Inteligente de Servicio
+        function preselectService(serviceName) {
+            const select = document.getElementById('service-select');
+            for(let i=0; i<select.options.length; i++) {
+                if(select.options[i].value.includes(serviceName)) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        // Selección Inteligente de Plan
+        function selectPlan(planName) {
+            const select = document.getElementById('service-select');
+            for(let i=0; i<select.options.length; i++) {
+                if(select.options[i].value.includes(planName.split(' - ')[0])) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            // Navegar suavemente al contacto
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Envió Simulado de Formulario y Modal
+        const modal = document.getElementById('modal-success');
+        const modalCard = document.getElementById('modal-card');
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Mostrar Modal con animación
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-90');
+                modalCard.classList.add('scale-100');
+            }, 10);
+
+            // Reiniciar formulario
+            event.target.reset();
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Cerrar modal al hacer clic afuera
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
